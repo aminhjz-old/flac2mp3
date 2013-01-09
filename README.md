@@ -1,7 +1,7 @@
 flac2mp3
 ========
 
-A command line flac to mp3 converter with album metadata conversion
+A command line flac to mp3 converter with album metadata conversion for Linux
 
 for this script to work you should install Lame and flac tools 
 in ubuntu :
