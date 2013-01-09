@@ -22,11 +22,11 @@ files=( `find $convert_dir -iname '*.flac' | tr "\n" " "` )
 # Convert each file, one at a time
 for file in ${files[*]}
 do
-  metaflac --export-tags-to=- "$file" | sed 's/=\(.*\)/="\1"/' >tmp.tmp
+  metaflac --export-tags-to=- "$file" | sed 's/=\(.*\)/="\1"/' | sed 's/\(.*\)/\L\1/' >tmp.tmp
   cat tmp.tmp
   . ./tmp.tmp
   rm tmp.tmp
-  flac -dc $file | lame -b $bitrate -h --tt "$title" --tn "$Tracknumber" --tg "$Genre" --ty "$Date" --ta "$Artist" --tl "$Album" --add-id3v2  - $output_dir/`basename $file`.mp3
+  flac -dc $file | lame -b $bitrate -h --tt "$title" --tn "$tracknumber" --tg "$genre" --ty "$date" --ta "$artist" --tl "$album" --add-id3v2  - $output_dir/`basename $file`.mp3
 done
 
 echo "Conversions complete!"
